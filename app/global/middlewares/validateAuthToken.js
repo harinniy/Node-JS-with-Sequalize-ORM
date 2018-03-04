@@ -2,7 +2,7 @@
 
 import jwt from 'jsonwebtoken';
 import config_server from 'app/config/server';
-import userController from 'app/services/user/controller/userController';
+import Service from 'app/helper/Service';
 import ResponseTemplate from 'app/global/templates/response';
 
 let ValidAuthToken = (req, res, next) => {
@@ -20,7 +20,7 @@ let ValidAuthToken = (req, res, next) => {
             if (err) {
                 res.json(ResponseTemplate.authError());
             } else {
-                userController.findById(decoded_user.id, (error, user) => {
+                Service.user.findById(decoded_user.id, (error, user) => {
                     if (error) {
                         res.json(ResponseTemplate.authError());
                     } else {
