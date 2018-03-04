@@ -2,7 +2,6 @@
 
 import express from 'express';
 import Helper from 'app/helper';
-import api_config from 'app/config/api';
 import axios from 'axios';
 
 let router = express.Router();

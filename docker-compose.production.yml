@@ -1,32 +1,27 @@
-# Run docker-compose -f docker-compose.production.yml build
-# Run docker-compose -f docker-compose.production.yml up
+# Run docker-compose build
+# Run docker-compose up
 # Live long and prosper
-
-version: '2'
+# docker command to Run
+#  Open another command window and navigate to this application's root folder in the command window
+#  Run `docker-compose build` to build the images
+#  Run `docker-compose up` to run the containers
+version: '3'
 
 services:
-
-  node:
-    container_name: nodeapp
-    image: nodeapp
-    build:
-      context: .
-      dockerfile: ./dockerfile
-    environment:
-      - NODE_ENV=production
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ~/datadir/mysql:/var/lib/mysql
     ports:
-      - "3000:3000"
-    networks:
-      - nodeapp-network
-
-  #No authentication is provided here - just a demo! Read the Dockerfile
-  #for more information about adding authentication.
-  mongodb:
-    container_name: mongodb
-    image: mongo
-    networks:
-      - nodeapp-network
-
-networks:
-  nodeapp-network:
-    driver: bridge
+      - 3306:3306 
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: abc12345
+  node-app:
+    build: ./app
+    volumes:
+      - ./app:/usr/src/app
+    ports:
+      - 8080:8080
+    depends_on:
+      - app-mysql

@@ -10,7 +10,7 @@ import AppMiddleware from 'app/middleware';
 import express from 'express';
 import winston from 'winston'
 import swagger from 'app/swagger';
-import models from "./app/global/db";
+import models from "./app/global/database";
 let app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 //---------------------------------------------//
@@ -20,7 +20,10 @@ new AppRoutes(app, express);
 new swagger(app);
 
 //Sync Database
-models.sequelize.sync().then(function () {
+models.sequelize.sync({
+    force : false,
+    logging : console.log
+}).then(function () {
     console.log('Nice! Database looks fine')
 
 }).catch(function (err) {

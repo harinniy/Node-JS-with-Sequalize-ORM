@@ -1,7 +1,7 @@
 {
-    "name": "NODE JS API",
+    "name": "node app backend API",
     "version": "0.1.0",
     "description": "Node js API Backend",
-    "title": "GenNext Training API Back end",
+    "title": " admin console",
     "url": "http://localhost:2233"
 }

@@ -1,8 +1,19 @@
-FROM node:4-onbuild
-# replace this with your application's default port
-RUN mkdir /app
-COPY package.json /app
+FROM node:carbon
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install application dependencies
+COPY package.json ./
+
+RUN npm install --global pm2
+# use pm2 proces manager 
 RUN npm install
-COPY . /app
-EXPOSE 8080
-CMD [ "npm", "start" ]
+# npm install
+
+# Bundle app source
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "pm2", "start", "app.js" ]

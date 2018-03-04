@@ -4,13 +4,13 @@
   "description": "backend for pac application",
   "main": "index.js",
   "scripts": {
+    "deploy" : "pm2 start app.js",
     "start": "node app.js ",
     "test": " mocha 'test/**/*.js' --timeout 10000  --compilers js:babel-core/register",
     "pretest": "npm run coverage",
     "lint": "eslint server.js",
     "lint-html": "eslint **/*.js -f html -o ./reports/lint-results.html",
     "lint-fix": "eslint --fix **/*.js",
-    "deploy": "npm run test && npm run start",
     "test:watch": "npm t -- -w",
     "docs": "apidoc -i app/ -o apidoc/",
     "coverage": "babel-node node_modules/.bin/babel-istanbul cover _mocha -- -R spec test/**/*.js --timeout 10000 --compilers js:babel-core/register"

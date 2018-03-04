@@ -2,10 +2,10 @@
 
 import express from 'express';
 
-//import AuthServiceRoutes from 'app/services/auth/routes';
+import defaultServiceRoutes from 'app/services/default/routes';
 let routes = function(app) {
     // user auth login routes
-    //app.use('/auth', AuthServiceRoutes);
+    app.use('/', defaultServiceRoutes);
     // user service routes
 }
 
