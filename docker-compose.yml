@@ -6,7 +6,6 @@
 #  Run `docker-compose build` to build the images
 #  Run `docker-compose up` to run the containers
 version: '3'
-
 services:
   node-app:
     build: ./
@@ -21,7 +20,7 @@ services:
     ports:
       - 3306:3306 
       - 33060:33060
-          depends_on:
-      - app-mysql
+    depends_on:
+      - node-app
     environment:
-      MYSQL_ROOT_PASSWORD: abc12345
+      MYSQL_ROOT_PASSWORD: 
