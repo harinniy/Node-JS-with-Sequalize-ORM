@@ -4,7 +4,7 @@
   "description": "backend for pac application",
   "main": "index.js",
   "scripts": {
-    "deploy" : "pm2 start app.js",
+    "deploy": "pm2 start app.js",
     "start": "node app.js ",
     "test": " mocha 'test/**/*.js' --timeout 10000  --compilers js:babel-core/register",
     "pretest": "npm run coverage",
@@ -67,6 +67,7 @@
     "passport-local": "1.0.0",
     "pm2": "^2.9.1",
     "sequelize": "^4.35.1",
+    "sequelize-cli": "^4.0.0",
     "superagent": "^3.8.2",
     "superagent-promise": "^1.1.0",
     "swagger-jsdoc": "^1.3.0",
