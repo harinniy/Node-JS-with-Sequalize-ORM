@@ -10,7 +10,7 @@ import AppMiddleware from 'app/middleware';
 import express from 'express';
 import winston from 'winston'
 import swagger from 'app/swagger';
-import models from "./app/global/database";
+import models from "./models";
 let app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 //---------------------------------------------//

@@ -2,8 +2,6 @@
 
 import _ from 'lodash';
 import Helper from 'app/helper';
-import TrainingTransformer from './TrainingTransformer';
-import ReviewTransformer from './ReviewTransformer';
 
 
 let UserTransformer = {
@@ -65,33 +63,6 @@ let UserTransformer = {
         } else {
             return UserTransformer._transformTraininer(users);
         }
-    },
-    _transformTrainer: (user) => {
-
-        if (!user) {
-            return {};
-        }
-        let user_status = (user.status === 1) ? 'active' : 'disabled';
-        let trainings = [];
-        if (user.training) {
-            trainings = TrainingTransformer.transformTrainingForTrainer(user.training);
-        }
-        let reviews = [];
-        if (user.reviews) {
-            reviews = ReviewTransformer.transform(user.reviews);
-        }
-        return {
-            id: user._id,
-            training: trainings,
-            reviews: reviews,
-            name: user.name,
-            phone: user.phone || '',
-            gender: user.gender || '',
-            birthday: user.birthday || '',
-            avatar: user.profile_picture ? Helper.avatarURL(user.profile_picture) : null,
-            address: user.address || '',
-            meta: user.meta || {},
-        };
     }
 }
 

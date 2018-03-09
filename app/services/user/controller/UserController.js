@@ -1,7 +1,8 @@
 'use strict';
 
 import UserTransformer from 'app/services/user/transformer/UserTransformer';
-var sequalizeDB = require("../../../global/database");
+var sequalizeDB = require("../../../../models/index");
+
 var User = sequalizeDB.User;
 
 class userController {
